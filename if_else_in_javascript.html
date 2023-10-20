@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if,elseif, else and switchcase javascript</title>
+</head>
+<body>
+    
+<script>
+
+let age=17;
+
+if (age>=18){ //used to check if the condition is true
+
+    console.log("You can vote");
+
+}
+
+else if (age<=17){ //additional condition 
+
+    console.log("you are not an adult");
+}
+
+else{ //final condition if all the conditions are false
+
+    console.log("you cant vote");
+}
+
+
+//SWITCHCASE - IT IS SIMILAR TO THE IF ELSE BUT WORKS A BIT DIFFERENTLY HERES AN EXAMPLE
+
+let b = 11;
+
+switch(b)
+{
+
+    case 5:
+        console.log("b is 4")
+
+        break;
+
+    case 10:    //if case mean b is 10 then it executes 
+    {
+
+        console.log("b is 10")
+        
+        break;
+    }
+
+    default:    //executes when  nothing is matched
+        {
+
+            console.log("nothing matched")
+        }
+
+
+
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>
