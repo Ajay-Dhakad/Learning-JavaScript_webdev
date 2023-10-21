@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="name" >hello i am ajay</h1>
+    <button id="btn" onclick="togglehide()">click me </button>  
+
+    <h1 id="cursor"></h1>
+</body>
+<script>
+
+
+
+function togglehide(){ //this function executes and change the display of name id to none and if its already none then to block
+
+let name = document.getElementById("name")
+let btn = document.getElementById("btn")
+if (name.style.display == "none"){
+    name.style.display = "block";
+}
+else{
+    name.style.display = "none";
+}
+
+}
+
+    //
+
+    // let name1 = document.getElementById("name");
+    // let cursor = document.getElementById("cursor")
+    // name1.addEventListener("mouseover",function mouseover() {
+
+    // cursor.innerHTML=("cursor on text")
+      
+
+
+    // });
+
+
+
+</script>
+</html>

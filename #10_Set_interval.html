@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> </h1>
+    <script>
+
+        // SETTIMEOUT IS USED TO SET A TIME TO EXECUTE A FUNCION ONCE AFTER A GIVEN TIME IS OVER LIKE A TIME BOMB
+
+       
+
+
+//     function hello(){
+
+//         console.log("hello")  //this will print hello after 1 secont only one time
+//     }
+
+//    // setTimeout(hello,1000)
+
+
+         //SETINTERVAL IS USED TO EXECUTE A FUNCTION EVERYTIME THE TIME CMPLETER LIKE CONSOLE LOG HELLO EVERY 2 SECONDS 
+
+        
+    // function hello(){
+
+    //     console.log("hello");        //this will print hello after every 1 seconds
+    // }
+
+    // setInterval(hello,1000);
+
+//-------------------------------------------------
+
+    //MAKING A CLOCK USING SETINTERVAL
+
+     let a = document.querySelector("h1") //to select and store html elements in a javascript variable
+    
+    function time(){
+
+       let b=new Date();         //used to store current time and date 
+
+        a.textContent=b           //parsing the content of b variable to html
+
+
+    }
+
+
+    setInterval(time,1000);      //this function executes after every 500ms
+
+
+    </script>
+</body>
+</html>
