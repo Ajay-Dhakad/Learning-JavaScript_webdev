@@ -7,5 +7,62 @@
 </head>
 <body>
     
+<script>
+
+
+let a = "ajay"; //just a normal variable that stores only one time of data assume its a glass of water and array is a whole box which contains many things like food,water and other types ofthings it can store multiple data types in a single variable
+
+console.log(a);
+
+//--------------OBJECTS -----------------
+
+let  person= { //this type of abject is used  to store key value pairs
+
+    name:"ajay",
+    age:18,
+    city:"no-where",
+
+
+
+}
+
+
+console.log(person); //printing the object in the console
+console.log(person["name"]); //getting our data by the keys using this syntax
+
+
+//-----------------ARRAYS--------------------
+
+let array=[100,20,"ajay",true,2.5];//this is an array that can store different type of datatypes in one variable
+let numbers = [1,5,6,3,4]
+
+console.log(array) //printing whole array
+
+console.log("my name is "+array[2]) //printing array elements by indexes
+console.log("my age is "+array[1]) 
+
+
+
+// ARRAY METHODS
+
+console.log("the length of array is "+array.length); //length of array
+
+let array_number = numbers.sort(); // sorting array in assending order
+console.log(numbers);
+
+let array_reverse = numbers.reverse() // reversing the array
+console.log(array_reverse)
+
+let pushing_in_array= array.push("pushed") //inserting data in an array
+console.log("pushed array = "+array)
+
+let removing_elements_array=array.pop("pushed") ///removing element from the array
+console.log("removed elements = "+array)
+
+
+
+
+</script>
+
 </body>
 </html>

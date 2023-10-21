@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    
+
+body,html{
+   
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#card{
+
+    width: 500px;
+    height: fit-content;
+    background-color: rgb(5, 49, 34);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 10px 10px 20px rgb(4, 65, 56) ;
+    text-align: center;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    transition: all .3s;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+#card:hover{
+
+    transform: scale(1.02);
+}
+
+#card img{
+
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    background-position: center;
+    border-radius: 20px;
+    
+    
+}
+button{
+
+    width: 200px;
+ font-size: 25px;
+ padding: 10px;
+ border-radius: 20px;
+ background-color:rgb(32, 184, 32);
+ color: white;
+ cursor: pointer;
+ border: none;
+    
+}
+
+button:active{
+
+    transform: scale(0.9);
+    transition: .2s;
+}
+
+input[type=button]{
+
+    width: 200px;
+ font-size: 25px;
+ padding: 10px;
+ border-radius: 20px;
+ background-color:rgb(32, 184, 32);
+ color: white;
+ cursor: pointer;
+ border: none;
+}
+
+input[type=button]:active{
+
+    transform: scale(0.9);
+    transition: .2s;
+}
+
+div{
+    display: none;
+}
+
+</style>
+<body>
+
+    <input type="button" value="Get Started" onclick="toggle()"></button>
+
+    <div id="card">
+
+        <img src="https://2.bp.blogspot.com/-aLSW6wUVT9M/UmI0oVFHtwI/AAAAAAAAHes/2Bdabr3fJRY/w1200-h630-p-k-no-nu/rdj-iron-man-2.jpg" alt="">
+
+        <h1>IronMan</h1>
+        <h2 id="stat" style="color: red;" >You are not following iron man</h2>
+
+        <button>Follow</button>
+
+    </div>
+
+    <script>
+
+       let stat = document.getElementById('stat');
+
+       let btn = document.querySelector('button');
+
+       var flag = 0;
+
+       let div = document.querySelector('div');
+       let startbutton = document.querySelector('input');
+       let body = document.querySelector('body')
+
+
+       function toggle(){
+
+        startbutton.style.display = "none"
+        body.style.backgroundColor = "rgb(30, 190, 153)"
+        div.style.display = "block"
+
+       }
+      
+       
+       btn.addEventListener("click", function(){
+
+
+
+        if (flag==0){
+
+            stat.textContent = "You Followed IronMan";
+            stat.style.color = "green"
+            btn.style.backgroundColor = "red"
+            btn.textContent = "Unfollow"
+            flag = 1;
+        }
+
+        else{
+
+            stat.textContent = "You are not following iron man";
+            stat.style.color = "red"
+            btn.style.backgroundColor = "green"
+            btn.textContent = "Follow"
+            flag=0;
+
+
+        }
+
+
+
+
+       })
+
+    </script>
+    
+</body>
+</html>
