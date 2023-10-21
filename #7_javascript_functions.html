@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript functions</title>
+</head>
+<body>
+
+    <script>
+
+        //functions in javascript are used as a component or a part of code that performs a certain functionality as specified in them to make the code clean and avoid repetetion of code
+
+
+        //EXAMPLE-1 - greeting 
+        function greet(name){
+
+            console.log(name+" is a programmer");
+
+
+        }
+
+        let name = "Ajay"
+        greet(name);
+
+        //EXAMPLE 2 - calculating nums
+
+        function calculate(a,b,c){
+
+            let sum = a+b+c;
+
+            return sum;     //returning is a simple thing if we return any thing we can use that value in another variable rather than printing it directly if it is printed directly in console itll execute everytime the function runs by default
+
+        }
+
+        a=10;
+        b=5;
+        c=5;
+
+        calculated_val = calculate(a,b,c);
+        console.log(calculated_val);
+
+
+        //EXAMPLE 3 - FUNCTION TO FIND OUT MAX OF 2 NUMS
+
+        function compare(a,b){
+
+            if (a>b){
+
+                console.log(a+ " is greater than "+b);
+
+            }
+            else if (a==b) {
+
+                    console.log("Both are equal")
+
+            }
+
+            else{
+
+                console.log(b+ ' is greater than '+a)
+            }
+
+
+
+        }
+
+
+        let num1=10;
+        let num2=20;
+
+        compare(num1,num2)
+
+
+    </script>
+    
+</body>
+</html>
