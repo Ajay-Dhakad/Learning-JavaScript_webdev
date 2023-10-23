@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    body,
+    html {
+
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color:rgb(24, 157, 104);
+        font-family:sans-serif;
+
+
+    }
+
+    #main {
+
+
+        width: 340px;
+        height: 600px;
+        border: 5px solid rgb(0, 0, 0);
+        position: relative;
+        display: flex;
+        /* align-items: flex-start; */
+        flex-direction: column;
+        background-color: rgb(0, 0, 0);
+        text-align: center;
+        box-shadow: 10px 10px 30px black;
+        border-radius: 20px;
+        color: rgb(0, 255, 166);
+        gap: 100px;
+        
+        
+
+    }
+
+    #stories {
+
+        width: 100%;
+        height: 100px;
+        border-bottom: 1px solid rgb(128, 105, 105);
+        padding: 10px;
+        overflow-x: scroll;
+        white-space: nowrap;
+        overflow-y: hidden;
+        
+    }
+
+    #stories::-webkit-scrollbar{
+
+        display: none;
+        scroll-behavior: smooth;
+        
+    }
+
+
+    #story{
+
+        width: 83px;
+        height: 83px;
+        background-image: linear-gradient(red,rgb(227, 13, 106),rgb(234, 151, 6));
+        border-radius: 50px;
+        display: inline-block;
+        overflow: hidden;
+        margin: 0 5px;
+        padding: 2px;
+        
+
+    }
+
+    #story img{
+
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50px;
+        object-position: center;
+        border: 3px solid white;
+        
+
+    }
+
+    #fullscreen{
+
+        width:100%;
+        height: 100%;
+        background-color: rgb(0, 0, 0);
+        position: absolute;
+        display: none;
+        background-size: contain;
+        background-position: center;
+        transition: all .2s ease-out;
+        background-repeat: no-repeat;
+        border-radius: 10px ;
+        overflow: hidden;
+        
+    }
+
+    #main h2{
+
+
+      color: rgb(15, 201, 77);       
+       
+    }
+
+   
+    
+    
+</style>
+
+<body>
+
+    <div id="main">
+        <div id="fullscreen"></div>
+        <div id="stories">
+
+           
+        </div>
+
+        
+
+       
+
+        <h2 >Instagram Stories Clone <br>
+        with <br><span style="color: rgb(180, 24, 24);font-weight:bold;">Html | Css | Javascript </span></h2>
+
+
+    </div>
+
+
+</body>
+
+<script>
+
+var arr= [
+
+{
+    dp:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS3ZGUaLyLbehKSfqhwwZP4gV_o3DSYDzdpg&usqp=CAU',story:'https://www.thenews.com.pk/assets/uploads/updates/2021-04-14/820039_5568386_12_updates.jpg'
+},
+
+{
+
+
+    dp:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMDRskOeKpGPL3tzULvWO-8ysB_mcX44iySw6XZeCvJArrwSvI3m2pJft6sDUiwS6w0Vw&usqp=CAU',story:'https://lionsgate.brightspotcdn.com/1d/90/8fc75de5411e985f3a2def98358d/johnwick4-section-promo-double-home-03.jpg'
+
+}
+,
+
+{
+
+    dp:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_LfMX9vm1RGsOBEUdKwKN5vy3wzkpThbTQ&usqp=CAU',story:'https://t3.ftcdn.net/jpg/05/68/93/66/240_F_568936629_1ZMiqD4GbJHk774PugrJgaxxbTnd2dZ4.jpg'
+},
+{
+
+dp:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH4zTTH0nEUaiefVbKHbNks6nNMJm4KNUa9g7WztOF1hcM5qufdU82QRGueYoyWUGOVHs&usqp=CAU',story:'https://lh6.googleusercontent.com/tgw4i_NI9nRVUWXq5FugVwb-QCv7ifzGuxAIWLZg_E4SFrfsDnheB0G2wtC7QgO3gpd8ymfwMoFOsRhCd1OidtjDi7QQl6cHKfYuLv6Cahl0GjsA1t-jF5KairCKaQzGpzH5zBsG'
+},
+{
+
+dp:'https://imageio.forbes.com/specials-images/imageserve/5c76b7d331358e35dd2773a9/0x0.jpg?format=jpg&crop=4401,4401,x0,y0,safe&height=416&width=416&fit=bounds',story:'https://cdn.wccftech.com/wp-content/uploads/2016/09/mark-zuckerberg.jpg'
+},
+{
+
+dp:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyRwTsuiutKrjhwxkXm9DEupixu2ix4yS_DQOijWvZ-mKilkmSXCRj4VrNACSKdEXCKI&usqp=CAU',story:'https://www.livemint.com/lm-img/img/2023/07/04/600x338/Musk_Twitter_1685505567853_1688453537446.JPG'
+}
+
+]
+
+
+var story = ""
+
+arr.forEach(function(elem,indx) {
+
+    story += `<div id="story">
+                <img id="${indx}" src="${elem.dp}" alt="">
+            </div>` 
+
+    
+});
+
+var stories = document.getElementById('stories')
+
+stories.innerHTML = story   
+
+//-----------------------------
+
+stories.addEventListener('click',function(dets){
+
+console.log(dets.target.id)
+let errorhandle=(dets.target.id)
+
+if (errorhandle=='stories'){
+
+
+}
+
+else{
+
+
+document.getElementById('fullscreen').style.display = "block";
+document.getElementById('fullscreen').style.backgroundImage = `url(${arr[dets.target.id].story})`
+
+setTimeout(function(){
+
+    document.getElementById('fullscreen').style.display = "none";
+
+
+},2000)
+}
+
+})
+
+
+
+
+
+
+
+</script>
+
+
+
+</html>
