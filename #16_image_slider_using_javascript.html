@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+* {
+
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+
+width: 100%;
+height: 100%;
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container{
+
+
+    width: 700px;
+    height: 500px;
+    /* background-color: red; */
+
+    border-radius: 20px;
+
+}
+
+.container img{
+
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 30px;
+    transition: all .5s;
+    animation-name: ajay;
+    animation-timing-function: 1s;
+    animation-fill-mode: forwards;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    
+
+}
+
+.container img:hover{
+    transform: scale(0.99);
+}
+
+
+@keyframes ajay {
+
+    from{transform: translateX(-30%);}
+    
+}
+
+to{
+    transform: translateX(0%);
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+      
+    </div>
+
+    <h1>IMAGE SLIDER</h1>
+
+
+    <script>
+
+
+let container = document.querySelector('.container');
+let imgs = [
+  'https://img.freepik.com/free-photo/luxurious-car-parked-highway-with-illuminated-headlight-sunset_181624-60607.jpg',
+  'https://img.freepik.com/free-photo/blue-black-muscle-car-with-license-plate-that-says-trans-front_1340-23399.jpg','https://cdn.pixabay.com/photo/2023/05/24/21/26/car-8015901_960_720.jpg'
+];
+
+let currentImageIndex = 0;
+
+function changeImage() {
+  container.innerHTML = `<img src="${imgs[currentImageIndex]}" alt="">`;
+  currentImageIndex = (currentImageIndex + 1) % imgs.length;
+//   console.log((currentImageIndex + 1) % imgs.length)
+// console.log(2%2)
+  setTimeout(changeImage, 2500); // Call the function again after 2 seconds
+}
+
+changeImage(); 
+
+
+
+
+    </script>
+    
+</body>
+</html>
