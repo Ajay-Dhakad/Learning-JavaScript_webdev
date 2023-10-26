@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        html,body{
+
+            width: 100%;
+            height: 100%;
+            background-color: rgba(31, 28, 28, 0.769);
+            display: flex;
+            align-items: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+.container{
+
+width: 300px;
+height: fit-content;display: flex;
+justify-content: flex-start;
+align-items: center;
+/* border: 2px solid red; */
+flex-direction: column;
+margin:  auto;
+gap: 10px;
+background-color: rgb(167, 167, 179);
+border-radius: 20px;
+box-shadow: 10px 10px 20px rgb(0, 0, 0);
+padding: 10px;
+transition: .2s all ease-in;
+
+
+}
+
+.container:hover{
+
+    box-shadow: 15px 20px 20px 5px black;
+
+}
+
+input{
+
+    width:90%;
+    height: 50px;
+    text-align:center;
+    border: 3px solid black;
+    font-size: 25px;
+    margin-top:20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+button{
+
+    width: 60px;
+    height: 60px;
+    /* padding: 20px; */
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    transition: .1s all ease-in-out;
+    border: none;
+    
+}
+
+button:active{
+
+    transform: scale(0.9);
+
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculator</h1>
+        <input type="text" >
+
+        <div class="btns">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+        </div>
+        <div class="btns">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+        </div>
+        <div class="btns">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>*</button>
+        </div>
+        <div class="btns">
+            <button>.</button>
+            <button>0</button>
+            <button>C</button>
+            <button>/</button>
+        </div>
+        <div class="btns">
+           
+            <button>%</button>
+            <button>=</button>
+        </div>
+
+    </div>
+
+
+    <script></script>
+
+</body>
+</html>
