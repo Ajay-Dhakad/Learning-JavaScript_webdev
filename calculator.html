@@ -53,12 +53,15 @@ input{
 
     width:90%;
     height: 50px;
-    text-align:center;
+    text-align:end;
     border: 3px solid black;
     font-size: 25px;
     margin-top:20px;
     border-radius: 10px;
     font-weight: bold;
+    background-color: rgb(8, 128, 70);
+    color: white;
+    padding: 0 10px;
 }
 
 button{
@@ -70,7 +73,7 @@ button{
     font-size: 20px;
     font-weight: bold;
     background-color: black;
-    color: white;
+    color: rgb(231, 213, 213);
     transition: .1s all ease-in-out;
     border: none;
     
@@ -78,7 +81,7 @@ button{
 
 button:active{
 
-    transform: scale(0.9);
+    transform: scale(0.93);
 
 }
 
@@ -91,39 +94,81 @@ button:active{
         <input type="text" >
 
         <div class="btns">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
+            <button id="btn">1</button>
+            <button id="btn">2</button>
+            <button id="btn">3</button>
+            <button id="btn">+</button>
         </div>
         <div class="btns">
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
+            <button id="btn">4</button>
+            <button id="btn">5</button>
+            <button id="btn">6</button>
+            <button id="btn">-</button>
         </div>
         <div class="btns">
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>*</button>
+            <button id="btn">7</button>
+            <button id="btn">8</button>
+            <button id="btn">9</button>
+            <button id="btn">*</button>
         </div>
         <div class="btns">
-            <button>.</button>
-            <button>0</button>
-            <button>C</button>
-            <button>/</button>
+            <button id="btn">.</button>
+            <button id="btn">0</button>
+            <button id="btn">C</button>
+            <button id="btn">/</button>
         </div>
         <div class="btns">
            
-            <button>%</button>
-            <button>=</button>
+            <button id="btn">%</button>
+            <button style="width: 100px;" id="btn">=</button>
         </div>
 
     </div>
 
 
-    <script></script>
+    <script>
+
+        let btn=document.querySelectorAll('#btn')
+
+        let input = document.querySelector('input')
+        let string = ''
+
+       btn.forEach(Element => {
+
+       Element.addEventListener('click',function(btn,j) {
+
+        
+
+        if (btn.target.innerHTML =='C' )
+        {
+
+            string = ''
+            input.value = string
+
+
+        }
+
+        else if (btn.target.innerHTML =='='){
+
+            string= eval(string)
+            input.value = string
+
+        }
+
+        else{
+        // console.log(btn.target.innerHTML)
+        string +=btn.target.innerHTML
+
+        input.value = string
+        
+       
+        }
+
+        
+       })
+
+       })
+    </script>
 
 </body>
 </html>
