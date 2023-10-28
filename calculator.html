@@ -26,7 +26,7 @@
 
 .container{
 
-width: 300px;
+width: 330px;
 height: fit-content;display: flex;
 justify-content: flex-start;
 align-items: center;
@@ -34,19 +34,39 @@ align-items: center;
 flex-direction: column;
 margin:  auto;
 gap: 10px;
-background-color: rgb(167, 167, 179);
+background-color: rgb(0, 0, 0);
 border-radius: 20px;
-box-shadow: 10px 10px 20px rgb(0, 0, 0);
+box-shadow: 5px 5px 40px rgb(4, 124, 80);
 padding: 10px;
 transition: .2s all ease-in;
+border: 2px solid rgb(0, 255, 170);
+color: rgb(1, 242, 130);
+animation-name: border;
+animation-timing-function:cubic-bezier(0.165, 0.84, 0.44, 1);
+animation-fill-mode:both;
+animation-direction: alternate-reverse;
+animation-iteration-count:infinite;
+animation-duration: 3s;
+
 
 
 }
 
-.container:hover{
+@keyframes border {
 
-    box-shadow: 15px 20px 20px 5px black;
+    from{
 
+        box-shadow: 5px 5px 40px rgb(4, 124, 80);
+
+
+    }
+    
+    to{
+
+        box-shadow: 10px 10px 50px rgb(3, 54, 36);
+
+
+    }
 }
 
 input{
@@ -56,10 +76,10 @@ input{
     text-align:end;
     border: 3px solid black;
     font-size: 25px;
-    margin-top:20px;
+    margin:10px;
     border-radius: 10px;
     font-weight: bold;
-    background-color: rgb(8, 128, 70);
+    background-color: rgb(8, 144, 78);
     color: white;
     padding: 0 10px;
 }
@@ -75,7 +95,8 @@ button{
     background-color: black;
     color: rgb(231, 213, 213);
     transition: .1s all ease-in-out;
-    border: none;
+    border: 2px solid rgb(0, 255, 157);
+
     
 }
 
