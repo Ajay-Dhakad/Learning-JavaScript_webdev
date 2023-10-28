@@ -141,7 +141,9 @@ button:active{
         <div class="btns">
            
             <button id="btn">%</button>
+            <button id="btn">del</button>
             <button style="width: 100px;" id="btn">=</button>
+         
         </div>
 
     </div>
@@ -151,12 +153,15 @@ button:active{
 
         let btn=document.querySelectorAll('#btn')
 
+      
+
         let input = document.querySelector('input')
         let string = ''
 
        btn.forEach(Element => {
+        
 
-       Element.addEventListener('click',function(btn,j) {
+       Element.addEventListener('click',function(btn) {
 
         
 
@@ -166,6 +171,15 @@ button:active{
             string = ''
             input.value = string
 
+
+        }
+
+        else if (btn.target.innerHTML=='del'){
+
+            // string=string.replace( `${string[-1]}`,'')
+            // remove=string.length-1
+            string=string.slice(0,-1)
+            input.value=string
 
         }
 
