@@ -178,13 +178,15 @@ button:active{
 
             // string=string.replace( `${string[-1]}`,'')
             // remove=string.length-1
-            string=string.slice(0,-1)
-            input.value=string
+            string = string.toString();
+            string= string.slice(0,-1);
+            input.value = string;
+
 
         }
 
         else if (btn.target.innerHTML =='='){
-
+            string = input.value
             string= eval(string)
             input.value = string
 
@@ -199,7 +201,7 @@ button:active{
        
         }
 
-        
+    
        })
 
        })
