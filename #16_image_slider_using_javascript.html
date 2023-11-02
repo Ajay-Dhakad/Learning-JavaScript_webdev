@@ -97,10 +97,18 @@ let imgs = [
 let currentImageIndex = 0;
 
 function changeImage() {
+
+    if (currentImageIndex==imgs.length){        //it turns the index back to zero when it become higher than arrray
+
+        currentImageIndex=0             
+        }
+   
+        
   container.innerHTML = `<img src="${imgs[currentImageIndex]}" alt="">`;
-  currentImageIndex = (currentImageIndex + 1) % imgs.length;
+  currentImageIndex = (currentImageIndex + 1);
 //   console.log((currentImageIndex + 1) % imgs.length)
 // console.log(2%2)
+
   setTimeout(changeImage, 2500); // Call the function again after 2 seconds
 }
 
