@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+* {
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,
+body{
+
+  
+    width: 100%;
+    height: 100%;
+  
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    font-family:monospace;
+}
+
+div{
+
+    background-color: rgb(111, 255, 0);
+    /* width: 1%; */
+    height: 5px;
+    
+
+}
+
+    </style>
+
+</head>
+
+<h1></h1>
+
+<div></div>
+
+<body>
+    
+    <script>
+    
+
+let h1 =  document.querySelector('h1')
+
+const body = document.querySelector('body')
+
+const div = document.querySelector('div')
+
+var count = 0;
+
+
+
+  function clock (){
+
+
+
+        setInterval(e => {
+        
+        
+            let  hours = new Date().getHours()
+            if (hours>12){
+
+                hours = hours-12
+
+            }
+
+            if (hours === 0){
+
+                hours = 12
+            }
+
+            
+           
+            let min = new Date().getMinutes()
+            let sec = new Date().getSeconds()
+            
+
+            
+            
+
+            
+
+            
+            body.style.backgroundColor = `rgb(0,0, ${sec*2})`
+
+            let width = div.style.width = `${sec/2}%`
+
+          
+
+
+
+
+
+
+            
+           
+            h1.textContent = `${hours}:${min}:${sec}`
+        
+        
+        },1000)
+        
+        
+        
+        }
+        
+        clock()</script>
+</body>
+</html>
