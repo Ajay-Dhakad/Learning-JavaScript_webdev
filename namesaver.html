@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text">
+    <button >Click me!</button>
+    <ul>
+      
+    </ul>
+
+</body>
+<script>
+    
+let inputval = document.querySelector('input');
+let button = document.querySelector('button');
+let ul = document.querySelector('ul');
+
+button.addEventListener('click', function() {
+    if (inputval.value.length > 0) {
+        const li = document.createElement('li');
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        
+        li.appendChild(document.createTextNode(inputval.value));
+        li.appendChild(deleteButton);
+        ul.appendChild(li);
+        
+        deleteButton.addEventListener('click', function() {
+            ul.removeChild(li);
+        });
+
+        inputval.value = '';
+
+    }
+
+  
+});
+</script>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        html,
+        body {
+
+            height: 100%;
+            width: 100vw;
+            background-image: url('https://images.wallpapersden.com/image/download/simple-firewatch_a2ltZWiUmZqaraWkpJRnamtlrWZpaWU.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-weight: bolder;
+            gap: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* border: 2px solid red; */
+           
+
+
+        }
+
+        .constainer {
+
+            width: 500px;
+            height: 550px;
+            background-color: rgba(0, 0, 0, 0.566);
+            box-shadow: 10px 10px 20px rgb(44, 39, 39);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        input {
+
+            width: 250px;
+            height: 40px;
+            border-radius: 20px;
+            border: 1px transparent;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 15px;
+
+
+
+
+
+
+
+        }
+
+        input {
+
+            border: none;
+        }
+
+
+        button {
+
+            width: 45px;
+            height: 45px;
+
+            background-image: url('https://png.pngtree.com/png-vector/20190321/ourmid/pngtree-vector-find-icon-png-image_856935.jpg');
+            border: none;
+            background-size: cover;
+            background-position: center;
+
+            border-radius: 100px;
+            /* border: 2px solid rebeccapurple; */
+
+            margin-left: -40px;
+            border: 2px rgb(0, 0, 0);
+        }
+
+        .searchfun {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 2px solid rebeccapurple; */
+            height: fit-content;
+            margin-top: 10px;
+        }
+
+        .temperature {
+
+            font-size: 5rem;
+            font-family: monospace;
+        }
+
+        .moreinfo {
+
+            width: 90%;
+            background-color: rgba(0, 0, 0, 0.635);
+            height: fit-content;
+            margin-top: 20px;
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 20px;
+        }
+
+        .error{
+
+            background-color: rgba(255, 0, 0, 0.66);
+            width: 50%;
+            height: 30px;
+            position:absolute;
+            top: 10px;
+            text-align: center;
+            border-radius: 20px;
+        
+            transition: .2s all ease-in;
+
+            animation-name: error;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            animation-iteration-count: 1;
+            display: none;
+            
+        }
+
+        @keyframes error {
+
+            from{
+
+                transform: translateY(-200%);
+
+            }
+
+            to {
+
+                transform: translateY(0%);
+            }
+            
+        }
+
+    </style>
+    <title>WeatherApp</title>
+</head>
+
+<body>
+
+    <h1>WeatherMaps</h1>
+    <div class="constainer">
+
+
+        <div class="error"> <strong>Invalid City Name</strong> </div>
+
+
+        <div class="searchfun"" ><input placeholder=" Search Your City Here..." id="search" type="text">
+            <button id="srcbtn" ></button></div>
+
+        <h1 class="temperature">22<sup>o</sup>C</h1>
+        <h1 class="cityname"></h1>
+
+        <!-- <img src="https://openweathermap.org/img/wn/09d@2x.png"  -->
+        <div class="moreinfo">
+
+            <h2 class="humidity"></h2>
+            <h2 class="cloud" ></h2>
+            <h2 class="wind" ></h2>
+
+        </div>
+
+
+
+
+    </div>
+
+    <script>
+
+
+
+const btn = document.getElementById('srcbtn')
+
+const inputval = document.querySelector('#search')
+const humidity = document.querySelector(".humidity")
+const cloud  = document.querySelector('.cloud')
+const wind = document.querySelector('.wind')
+
+
+let getdata =async (location) => {
+
+
+
+let fetch1 = await fetch(`https://api.weatherapi.com/v1/current.json?key=23d182faeb3844f593b161013230311&q=${location}&aqi=yes`)
+
+let arr = await fetch1.json()
+
+
+
+let array = []
+
+array.push(arr);
+
+if (fetch1.ok){
+
+return array;
+}
+
+return null
+
+
+
+
+
+
+}
+
+
+
+// weather('mandsaur')
+
+
+let showweather =async (city) => {
+
+    let arr = await getdata(`${city}`)
+
+  
+
+    // console.log(arr)
+    // console.log(cityname)
+    // console.log(temperature)
+    // console.log(cloudstatus)
+    // console.log(humidity)
+    // console.log(WindSpeed)
+
+    if (arr) {
+
+    let details = [{
+
+        cityname : arr[0].location.name +','+  arr[0].location.country,
+        temperature : arr[0].current.temp_c+'<sup>o</sup>C',
+ cloud :  arr[0].current.cloud,
+ humidity : arr[0].current.humidity,
+ WindSpeed : arr[0].current.wind_mph
+
+    }]
+
+    // console.log(details)
+
+  
+
+return details
+    }
+
+    return null
+
+}
+
+// showweather()
+
+btn.addEventListener('click', async () => {
+
+   
+    var cityname = inputval.value
+    
+
+
+
+
+    let data = await showweather(cityname)
+    
+
+
+    if (data){
+    
+
+    inputval.value = ''
+
+    localStorage.setItem('city',cityname)
+
+
+    let temp = document.querySelector('.temperature')
+    let city = document.querySelector('.cityname')
+
+
+    temp.appendChild     = data[0].temperature
+    city.textContent = data[0].cityname
+    humidity.textContent = 'Humidity :' + data[0].humidity
+    cloud.textContent = 'Cloud :'+ data[0].cloud
+    wind.textContent = 'Wind Speed M/hr :'+ data[0].WindSpeed
+
+
+    }
+
+    else{
+
+
+
+        var error = document.querySelector('.error')
+
+        error.style.display = 'block'
+
+        setTimeout( () => {
+
+             error.style.display = 'none'
+
+        },2000)
+
+            
+
+
+
+        
+
+        
+
+        
+
+    }
+
+   
+
+    
+   
+    
+    
+
+})
+
+
+let defaultweather =async () => {
+
+
+    let cityname = localStorage.getItem('city')
+
+    if (cityname){
+
+        var data = await showweather(cityname)
+
+
+
+    }
+
+    else {
+
+        
+        var data = await showweather('mandsaur')
+
+
+
+    }
+    
+
+
+
+    inputval.value = ''
+
+
+    let temp = document.querySelector('.temperature')
+    let city = document.querySelector('.cityname')
+
+
+    temp.append = data[0].temperature
+    city.textContent = data[0].cityname
+    humidity.textContent = 'Humidity :' + data[0].humidity
+    cloud.textContent = 'Cloud :'+ data[0].cloud
+    wind.textContent = 'Wind Speed M/hr :'+ data[0].WindSpeed
+
+
+}
+
+
+defaultweather()
+
+
+
+// <h1 class="temperature">22<sup>o</sup>C</h1>
+//         <h1 class="cityname">Mandsaur,India</h1>
+
+//         <!-- <img src="https://openweathermap.org/img/wn/09d@2x.png"  -->
+//         <div class="moreinfo">
+
+//             <h2>Humidity : 22</h2>
+//             <h2>Cloud : 22</h2>
+//             <h2>WindSpeed M/hr: 22</h2>
+
+//         </div>
+
+
+
+
+    </script>
+</body>
+
+</html>

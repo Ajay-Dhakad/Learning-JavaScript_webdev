@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        * {
+
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            /* transition: .2 ease-in; */
+
+        }
+
+        ::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+        
+
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+            /* background-image: url('https://cdn.wallpaperhub.app/cloudcache/9/2/6/4/e/6/9264e612b57c1e56bd290d966ebf2976712fc402.jpg'); */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-size: cover;
+            position: relative;
+            background-position: center;
+            font-weight: bolder;
+            background-repeat: no-repeat;
+
+            background-color: transparent;
+
+            overflow-x: hidden;
+            padding-bottom: 10px;
+
+
+
+        }
+
+        nav {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.379);
+            color: black;
+            width: 100%;
+            height: 70px;
+            font-size: 20px;
+            backdrop-filter: blur(10px);
+            color: white;
+
+            font-size: 23px;
+            position: fixed;
+            top: 0px;
+
+            /* border: 2px solid rebeccapurple; */
+            /* border: 1px solid rgb(240, 0, 0); */
+
+
+
+
+
+        }
+
+
+        #logo {
+
+            color: white;
+            animation-name: logo;
+            animation-duration: 2s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+
+        }
+
+        @keyframes logo {
+
+            from {
+
+                color: rgb(90, 221, 90);
+
+            }
+
+            to {
+
+                color: rgb(255, 255, 255);
+            }
+
+        }
+
+
+        .main {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: fit-content;
+            flex-direction: column;
+            /* border: 2px solid red; */
+            margin-top: 70px;
+            gap: 20px;
+            /* border: 2px solid red; */
+
+
+        }
+
+        .savetodo {
+
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: 300px;
+            background-color: rgba(0, 0, 0, 0.628);
+
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 20px;
+            color: white;
+            margin-top: 20px;
+
+        }
+
+        #todotext {
+
+            width: 300px;
+            height: 40px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            input-security: auto;
+
+
+        }
+
+        .btn {
+
+            width: 140px;
+            height: 50px;
+
+            background-size: contain;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 5px;
+            font-size: 17px;
+            border: none;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: rgb(15, 135, 15);
+            color: white;
+            transition: .1s all;
+
+            /* background-position: center; */
+
+
+
+        }
+
+        .clear {
+
+            width: 140px;
+            height: 50px;
+
+            background-size: contain;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 5px;
+            font-size: 17px;
+            border: none;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: rgb(192, 14, 14);
+            color: white;
+            margin: 0 10px;
+            transition: .1s all;
+
+        }
+
+        .clear:active {
+
+            transform: scale(0.95);
+        }
+
+        .btn:active {
+
+            transform: scale(0.95);
+        }
+
+        .taskaction {
+
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .alltodo {
+
+            /* border: 2px solid red; */
+            width: 500px;
+            height: 100px;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.61);
+            color: white;
+            gap: 10px;
+            font-size: large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-radius: 20px;
+
+        }
+
+        .deltodo,
+        .editodo {
+
+            width: 35px;
+            height: 35px;
+            border-radius: 50px;
+            object-fit: cover;
+            object-position: center;
+            /* background-color: white; */
+            /* border: 2px solid rgb(0, 0, 0); */
+
+
+        }
+
+        .editodo {
+            background-color: white;
+        }
+
+        .hover {
+
+            transition: .2s ease;
+        }
+
+        .hover:hover {
+            transform: scale(0.9);
+        }
+
+        .conftodo {
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            /* border: 2px solid red; */
+            gap: 10px;
+        }
+
+        .todos {
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            word-wrap: break-word;
+        }
+
+        .backimg {
+
+            background-image: url('https://cdn.wallpaperhub.app/cloudcache/9/2/6/4/e/6/9264e612b57c1e56bd290d966ebf2976712fc402.jpg');
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            position: fixed;
+            z-index: -1;
+            filter: brightness(1);
+            top: 0px;
+        }
+
+
+        .todoanimation {
+
+
+            animation-name: todopop;
+            animation-duration: .5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+
+        }
+
+       
+
+        @keyframes todopop {
+
+            from {
+
+                transform: translateY(50%);
+
+            }
+
+            to {
+
+                transform: translateY(0%);
+
+            }
+
+        }
+
+        
+
+        #update,
+        #cancel {
+
+            display: none;
+            animation-name: todopop;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+
+
+        }
+
+        .hide {
+
+            display: none;
+        }
+
+        @media (max-width:510px) {
+
+
+            .savetodo {
+                width: 95%;
+            }
+
+            .todos {
+                width: 90%;
+            }
+
+            .alltodo {
+                width: 100%;
+            }
+
+        }
+
+        #break {
+
+
+            word-wrap: break-word;
+            width: 90%;
+        }
+
+        .Date {
+
+            font-weight: bolder;
+            margin-top: 15px;
+            color: red;
+            font-size: 17px;
+            animation: todopop alternate-reverse 1;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="backimg"></div>
+    <nav>
+
+        <h1 id="logo">TaskMania</h1>
+
+
+    </nav>
+
+
+
+    <section class="main">
+
+
+        <div class="savetodo">
+            <h1>Create A Todo</h1>
+            <input id="todotext" class="todotitle" placeholder="Title" type="text" name="" id="" focus required>
+            <input id="todotext" class="tododesc" placeholder="description" type="text" required>
+            <div class="taskaction">
+                <button class="btn" type="submit">Save Task</button>
+                <button class="clear">Clear</button>
+                <button id="update" class="btn" type="submit">Update</button>
+                <button id="cancel" class="clear">Cancel</button>
+            </div>
+        </div>
+        <div class="todos"></div>
+        <!-- <div class="alltodo">
+
+        <div>
+        <h1>title</h1>
+        <p>description of this todo</p>
+    </div>
+        <div class="conftodo">
+            <img  class="editodo hover" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-2/254000/70-512.png" alt="">
+            <img class="deltodo hover"src="https://vectorified.com/images/delete-icon-android-37.png" alt="">
+        </div>
+
+        
+
+
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        var arr = []
+
+        // if (arr.length<0 && localStorage.getItem('todo') !== null){
+
+        // arr.push(JSON.parse(localStorage.getItem('todo')))
+        // }
+
+
+        localstrg()
+
+
+
+
+
+        let clearinp = document.querySelector('.clear')
+        let savetask = document.querySelector('.btn');
+        var todotitle = document.querySelector('.todotitle')
+        var tododesc = document.querySelector('.tododesc')
+        let alltodos = document.querySelector('.todos')
+        let update = document.querySelector('#update')
+        let cancel = document.querySelector('#cancel')
+        let btn = document.querySelector('.btn')
+        let clear = document.querySelector('.clear')
+
+
+
+        clearinp.addEventListener('click', () => {
+
+            todotitle.value = ''
+            tododesc.value = ''
+
+
+
+        })
+
+
+
+        savetask.addEventListener('click', () => {
+
+            if (todotitle.value !== '' && tododesc.value !== '') {
+
+                let todoid = Math.random().toString(36).slice(-5);
+
+                let b = new Date()
+                let a = `${b.toLocaleTimeString()} | ${b.toLocaleDateString()}`
+
+
+
+                let todo = {
+
+                    id: todoid,
+                    title: todotitle.value,
+                    desc: tododesc.value,
+                    date: a
+
+
+                }
+
+                todotitle.value = ''
+                tododesc.value = ''
+
+                // if (arr.length<0){
+
+
+                // }
+
+                arr.push(todo)
+
+                localStorage.setItem("todo", JSON.stringify(arr));
+
+                localstrg()
+
+                showtodo()
+
+
+
+
+            }
+
+
+
+
+        })
+
+
+
+
+        function localstrg() {
+
+
+            if (localStorage.getItem("todo")) {
+                arr = JSON.parse(localStorage.getItem("todo"))
+            }
+
+
+        }
+
+
+        async function showtodo() {
+
+
+            if (localStorage.getItem('todo')) {
+
+
+                // let arr = JSON.parse(localStorage.getItem('todo'));
+
+                let arr = JSON.parse(localStorage.getItem('todo'))
+
+                // let a = arr.findIndex(x => x.id == 'p8fsb')
+                // console.log(a,'is indx')
+
+                arr = arr.reverse()
+
+                alltodos.innerHTML = ''
+
+
+
+
+
+                for (i of arr) {
+
+                    alltodos.innerHTML +=
+
+                        `<div class="alltodo todoanimation" id='${i.id}' >
+
+<div id='break'>
+<h1>${i.title}</h1>
+<p>${i.desc}</p>
+<div class='Date'>DateCreated : ${i.date}</div>
+</div>
+<div class="conftodo">
+    <img id='${i.id}'  class="editodo hover" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-2/254000/70-512.png" alt="">
+    <img id='${i.id}'  class="deltodo hover"src="https://vectorified.com/images/delete-icon-android-37.png" alt="">
+</div>
+
+
+
+
+</div>`
+
+                }
+
+            }
+
+
+
+
+            deleventlistener() //runs when all all elements when created a exist in dom`
+            editeventlistener()
+
+        }
+
+
+        showtodo()
+
+
+        function deleventlistener() {
+
+            var deltodo = document.querySelectorAll('.deltodo')
+
+            deltodo.forEach(item => {
+
+                item.addEventListener('click', (e) => {
+
+                    e.preventDefault()
+
+                    let id = e.target.id
+
+                    var indx = 0
+
+                    arr.forEach((elem) => {
+
+                        if (elem.id == id) {
+
+                            arr.splice(indx, 1)
+
+                        }
+
+                        indx += 1
+
+                    })
+
+                    localStorage.setItem('todo', JSON.stringify(arr))
+
+
+                    showtodo()
+                })
+
+            })
+        }
+
+
+        function editeventlistener() {
+
+            var editodo = document.querySelectorAll('.editodo')
+
+            var index
+
+            var id
+
+            editodo.forEach(item => {
+
+                item.addEventListener('click', (e) => {
+
+                    e.preventDefault()
+
+                    id = e.target.id
+
+                    index = arr.findIndex(indx => indx.id === id)
+
+
+                    todotitle.value = arr[index].title
+                    tododesc.value = arr[index].desc
+
+
+
+                    btn.style.display = 'none'
+                    clear.style.display = 'none'
+
+                    update.style.display = 'block'
+                    cancel.style.display = 'block'
+
+                    //-----------------------------------------
+
+
+                    let todos = document.getElementsByClassName('todos')
+                    let todoarr = Array.from(todos)
+
+                    let elems = todoarr[0].childNodes
+
+
+                    elems.forEach((e) => {
+
+                        if (e.id !== id) {
+
+                            e.classList.add('hide')
+
+                        }
+
+                    })
+
+
+
+                })
+
+
+
+            })
+
+
+
+            update.addEventListener('click', () => {
+
+                if (todotitle.value && tododesc.value) {
+
+                    arr[index].title = todotitle.value
+                    arr[index].desc = tododesc.value
+
+                    btn.style.display = 'block'
+                    clear.style.display = 'block'
+                    update.style.display = 'none'
+                    cancel.style.display = 'none'
+
+                    todotitle.value = ''
+                    tododesc.value = ''
+
+                    localStorage.setItem('todo', JSON.stringify(arr))
+
+                    showtodo()
+
+
+                }
+
+
+
+            })
+
+            cancel.addEventListener('click', () => {
+
+
+                todotitle.value = ''
+                tododesc.value = ''
+
+                btn.style.display = 'block'
+                clear.style.display = 'block'
+                update.style.display = 'none'
+                cancel.style.display = 'none'
+
+                showtodo()
+
+
+
+            })
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

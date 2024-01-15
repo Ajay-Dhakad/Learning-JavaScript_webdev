@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .inp {
+        width: 500px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: transparent;
+        border: 2px solid white;
+        margin-top: 30px;
+        color: white;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      #lable {
+        margin: 30px 10px 0 0;
+        font-size: 20px;
+      }
+
+      #btn {
+        margin: 20px;
+        height: 50px;
+        font-size: 30px;
+        border-radius: 20px;
+        transition-duration: 2s;
+        background-color: rgb(50, 200, 50);
+        border: 2px solid white;
+      }
+
+      #btn:hover {
+        transform: scale(1.2);
+        background-color: rgb(127, 226, 154);
+        cursor: pointer;
+      }
+
+      .box {
+        height: fit-content;
+        background-color: aliceblue;
+        width: 80vw;
+        border: 2px solid green;
+        border-radius: 30px;
+        color: black;
+        padding: 20px;
+        text-align: center;
+      }
+
+      #ti_to {
+        padding: 10px;
+
+        margin: 5px;
+        border-radius: 5px;
+      }
+      .bor {
+        border: 2px solid red;
+      }
+
+      #title {
+        padding: 2px;
+        font-size: 25px;
+        font-weight: 600;
+      }
+
+      #todo {
+        padding: 2px;
+        font-size: 20px;
+      }
+
+      #De_btn {
+        background-color: rgb(237, 7, 7);
+        color: white;
+        font-size: 20px;
+        border-radius: 5px;
+        transition-duration: 2s;
+      }
+
+      #De_btn:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+      #ed_btn {
+        background-color: rgb(237, 195, 7);
+        color: white;
+        font-size: 20px;
+        border-radius: 5px;
+        transition-duration: 2s;
+      }
+
+      #ed_btn:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="center">
+      <div class="inp_title">
+        <label id="lable">Title:</label>
+        <input
+          type="text"
+          placeholder="Enter your Title"
+          id="inp-1"
+          class="inp"
+        />
+      </div>
+      <div class="inp_todo">
+        <label id="lable">Todo:</label>
+        <input
+          type="text"
+          placeholder="Enter your Todo"
+          id="inp-2"
+          class="inp"
+        />
+      </div>
+      <div class="butn">
+        <button id="btn">Add Todo</button>
+      </div>
+
+      <div class="box" id="box_I">
+        <h1 id="Exp">Add your Todo</h1>
+        <div id="ti_to"></div>
+      </div>
+    </div>
+    <script>
+      let btn = document.getElementById("btn");
+      let box = document.getElementById("box_I");
+
+      let arr = [];
+      btn.addEventListener("click", funcadd);
+
+      function funcadd(e) {
+        let Exp = (document.getElementById("Exp").textContent = "");
+        let inp_1 = document.getElementById("inp-1");
+        let inp_2 = document.getElementById("inp-2");
+        if (
+          inp_1.value == "" ||
+          inp_1.value == null ||
+          inp_2.value == null ||
+          inp_2.value == ""
+        ) {
+          return false;
+        } else {
+          //set Item in local storage
+
+          var obj = {
+            Title: inp_1.value,
+            Todo: inp_2.value,
+          };
+          arr.push(obj);
+          localStorage.setItem("todo", JSON.stringify(arr));
+
+          //Display Item in innerHTML
+          box.innerHTML += `  <div id="ti_to" class="bor">
+        <h1 id="title">${inp_1.value}</h1>
+        <p id="todo">${inp_2.value}</p>
+        <button id="ed_btn" onclick="edfunc(this)">Edit</button>
+        <button id="De_btn" onclick="defunc(this)">Delete</button>
+      
+      </div>
+ `;
+
+          inp_1.value = "";
+          inp_2.value = "";
+        }
+      }
+
+      //Remove Todo
+      function defunc(e, element) {
+        console.log(element)
+        let a = confirm("Do you want to delete todo");
+        if (a == true) {
+          //remove data from localStorage
+          let data = localStorage.getItem("todo");
+
+
+          let arrData = JSON.parse(data);
+          arrData.splice(element, 1);
+          localStorage.setItem("todo", JSON.stringify(arrData));
+          //remove data from display
+          let elem = e;
+          elem.parentElement.remove();
+        }
+      }
+      //Get Item to local storage
+      function loadData() {
+        let data = localStorage.getItem("todo");
+        let arrData = JSON.parse(data);
+        console.log(arrData);
+        arrData.forEach((element) => {
+          box.innerHTML += `  <div id="ti_to" class="bor">
+        <h1 id="title">${element.Title}</h1>
+        <p id="todo">${element.Todo}</p>
+        <button id="ed_btn" onclick="edfunc(this,${arrData.indexOf(
+          element
+        )})">Edit</button>
+        <button id="De_btn" onclick="defunc(this,${arrData.indexOf(
+          element
+        )})">Delete</button>
+     
+      </div>
+ `;
+          let obj2 = {
+            Title: element.Title,
+            Todo: element.Todo,
+          };
+          arr.push(obj2);
+        });
+      }
+      loadData();
+
+      //Edit btn
+      function edfunc(ed, element) {
+        if (ed.textContent == "Done") {
+          ed.textContent = "Edit";
+          ed.style.backgroundColor = " rgb(237, 195, 7)";
+          let editedtext = ed.previousElementSibling.textContent;
+          let currp = document.createElement("p");
+          currp.contentEditable = "false";
+          currp.style.fontSize = "20px";
+          currp.textContent = editedtext;
+          ed.parentElement.replaceChild(currp, ed.previousElementSibling);
+          //Edit on localStorage
+          let data = localStorage.getItem("todo");
+          let arrData = JSON.parse(data);
+          arrData.forEach((ele, index) => {
+            if (index == element) {
+              ele.Todo = editedtext;
+            }
+          });
+          localStorage.setItem("todo", JSON.stringify(arrData));
+        } else {
+          ed.textContent = "Done";
+          ed.style.backgroundColor = "rgb(145, 120, 9)";
+          let oldptext = ed.previousElementSibling.textContent;
+          let newp = document.createElement("p");
+          newp.textContent = oldptext;
+          newp.contentEditable = "true";
+          newp.fontSize = "25px";
+          ed.parentElement.replaceChild(newp, ed.previousElementSibling);
+        }
+      }
+    </script>
+  </body>
+</html>
